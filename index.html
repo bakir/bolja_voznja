@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bolja vožnja</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <h1>Bolja vožnja</h1>
+    <div class="toolbar-controls">
+      <label>
+        Katalog
+        <select id="catalog-select">
+          <option value="katalog1">Katalog 1</option>
+          <option value="katalog2">Katalog 2</option>
+          <option value="katalog3">Katalog 3</option>
+        </select>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="prioritize-weakest">
+        Prioritizuj najslabije
+      </label>
+      <button type="button" id="next-btn">Sljedeće pitanje</button>
+      <button type="button" id="show-hidden-btn" class="secondary">Sakrivena (<span id="hidden-count">0</span>)</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <p id="loading">Učitavanje…</p>
+    <section id="question-panel" hidden>
+      <div class="question-meta">
+        <span id="question-label"></span>
+        <div class="question-actions">
+          <button type="button" id="hide-btn" class="secondary">Sakrij pitanje</button>
+        </div>
+      </div>
+      <img id="question-image" alt="Pitanje">
+      <p id="question-text" hidden></p>
+      <div id="options" class="options"></div>
+      <p id="feedback" class="feedback" hidden></p>
+      <label class="notes-label">
+        Bilješke
+        <textarea id="notes" rows="3" placeholder="Tvoje bilješke za ovo pitanje…"></textarea>
+      </label>
+    </section>
+    <p id="empty-state" hidden>Nema dostupnih pitanja. Uključi sakrivena ili promijeni katalog.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

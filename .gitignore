@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+katalog1_final.checkpoint.json
+_test_*
+katalog1_questionpics_test/

@@ -1,0 +1,273 @@
+const STORAGE_KEY = "bolja_voznja_state";
+
+const CATALOG_FILES = {
+  katalog1: "katalog1_final.json",
+  katalog2: "katalog2_answers.json",
+  katalog3: "katalog3_answers.json",
+};
+
+const catalogSelect = document.getElementById("catalog-select");
+const prioritizeWeakest = document.getElementById("prioritize-weakest");
+const nextBtn = document.getElementById("next-btn");
+const hideBtn = document.getElementById("hide-btn");
+const showHiddenBtn = document.getElementById("show-hidden-btn");
+const hiddenCountEl = document.getElementById("hidden-count");
+const loadingEl = document.getElementById("loading");
+const panelEl = document.getElementById("question-panel");
+const emptyEl = document.getElementById("empty-state");
+const questionLabel = document.getElementById("question-label");
+const questionImage = document.getElementById("question-image");
+const questionText = document.getElementById("question-text");
+const optionsEl = document.getElementById("options");
+const feedbackEl = document.getElementById("feedback");
+const notesEl = document.getElementById("notes");
+
+let catalogData = {};
+let questionIds = [];
+let currentId = null;
+let showingHiddenPicker = false;
+
+function defaultState() {
+  return {
+    settings: {
+      catalog: "katalog1",
+      prioritizeWeakest: false,
+    },
+    questions: {},
+  };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultState();
+    return { ...defaultState(), ...JSON.parse(raw) };
+  } catch {
+    return defaultState();
+  }
+}
+
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function questionKey(catalog, id) {
+  return `${catalog}:${id}`;
+}
+
+function getQuestionState(id) {
+  const state = loadState();
+  const key = questionKey(state.settings.catalog, id);
+  if (!state.questions[key]) {
+    state.questions[key] = { correctCount: 0, notes: "", hidden: false };
+  }
+  return state.questions[key];
+}
+
+function setQuestionState(id, patch) {
+  const state = loadState();
+  const key = questionKey(state.settings.catalog, id);
+  state.questions[key] = { ...getQuestionState(id), ...patch };
+  saveState(state);
+}
+
+function getSettings() {
+  return loadState().settings;
+}
+
+function setSettings(patch) {
+  const state = loadState();
+  state.settings = { ...state.settings, ...patch };
+  saveState(state);
+}
+
+function normalizeCatalogPayload(catalog, payload) {
+  if (catalog === "katalog1") {
+    return payload.questions || payload;
+  }
+  return payload;
+}
+
+async function loadCatalog(catalog) {
+  const response = await fetch(CATALOG_FILES[catalog]);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${CATALOG_FILES[catalog]}`);
+  }
+  const payload = await response.json();
+  catalogData = normalizeCatalogPayload(catalog, payload);
+  questionIds = Object.keys(catalogData).sort((a, b) => Number(a) - Number(b));
+}
+
+function availableQuestionIds(includeHidden = false) {
+  return questionIds.filter((id) => {
+    const qState = getQuestionState(id);
+    return includeHidden || !qState.hidden;
+  });
+}
+
+function pickNextQuestionId(includeHidden = false) {
+  const pool = availableQuestionIds(includeHidden);
+  if (!pool.length) return null;
+
+  const settings = getSettings();
+  if (settings.prioritizeWeakest) {
+    const counts = pool.map((id) => getQuestionState(id).correctCount ?? 0);
+    const minCount = Math.min(...counts);
+    const weakest = pool.filter((id) => (getQuestionState(id).correctCount ?? 0) === minCount);
+    return weakest[Math.floor(Math.random() * weakest.length)];
+  }
+
+  if (pool.length === 1) return pool[0];
+  let candidate = pool[Math.floor(Math.random() * pool.length)];
+  if (candidate === currentId && pool.length > 1) {
+    const others = pool.filter((id) => id !== currentId);
+    candidate = others[Math.floor(Math.random() * others.length)];
+  }
+  return candidate;
+}
+
+function updateHiddenCount() {
+  const hidden = questionIds.filter((id) => getQuestionState(id).hidden).length;
+  hiddenCountEl.textContent = String(hidden);
+}
+
+function renderQuestion(id) {
+  const record = catalogData[id];
+  if (!record) return;
+
+  currentId = id;
+  const qState = getQuestionState(id);
+  const settings = getSettings();
+
+  questionLabel.textContent = `Pitanje ${id} · tačno ${qState.correctCount}×`;
+  questionImage.src = record.question_pic;
+  questionImage.alt = `Pitanje ${id}`;
+
+  if (record.question) {
+    questionText.hidden = false;
+    questionText.textContent = record.question;
+  } else {
+    questionText.hidden = true;
+    questionText.textContent = "";
+  }
+
+  optionsEl.innerHTML = "";
+  feedbackEl.hidden = true;
+  feedbackEl.textContent = "";
+  feedbackEl.className = "feedback";
+
+  const optionCount = record.option_count || (record.options ? record.options.length : 0);
+  for (let option = 1; option <= optionCount; option += 1) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "option-btn";
+    const label = record.options?.[option - 1];
+    button.textContent = label ? `${option}. ${label}` : `Odgovor ${option}`;
+    button.addEventListener("click", () => checkAnswer(id, option, button));
+    optionsEl.appendChild(button);
+  }
+
+  notesEl.value = qState.notes || "";
+  hideBtn.textContent = qState.hidden ? "Vrati pitanje" : "Sakrij pitanje";
+
+  panelEl.hidden = false;
+  emptyEl.hidden = true;
+  updateHiddenCount();
+}
+
+function checkAnswer(id, selected, button) {
+  const record = catalogData[id];
+  const correctAnswers = record.answers || [];
+  const isCorrect = correctAnswers.includes(selected);
+
+  [...optionsEl.querySelectorAll("button")].forEach((el) => {
+    el.disabled = true;
+  });
+
+  feedbackEl.hidden = false;
+  if (isCorrect) {
+    feedbackEl.textContent = "Tačno!";
+    feedbackEl.className = "feedback correct";
+    button.classList.add("correct");
+    const qState = getQuestionState(id);
+    setQuestionState(id, { correctCount: (qState.correctCount ?? 0) + 1 });
+    questionLabel.textContent = `Pitanje ${id} · tačno ${getQuestionState(id).correctCount}×`;
+  } else {
+    feedbackEl.textContent = `Netačno. Tačan odgovor: ${correctAnswers.join(", ")}`;
+    feedbackEl.className = "feedback wrong";
+    button.classList.add("wrong");
+  }
+}
+
+function showNextQuestion() {
+  const id = pickNextQuestionId(showingHiddenPicker);
+  if (!id) {
+    panelEl.hidden = true;
+    emptyEl.hidden = false;
+    currentId = null;
+    return;
+  }
+  renderQuestion(id);
+}
+
+function syncSettingsUi() {
+  const settings = getSettings();
+  catalogSelect.value = settings.catalog;
+  prioritizeWeakest.checked = settings.prioritizeWeakest;
+}
+
+notesEl.addEventListener("input", () => {
+  if (!currentId) return;
+  setQuestionState(currentId, { notes: notesEl.value });
+});
+
+hideBtn.addEventListener("click", () => {
+  if (!currentId) return;
+  const qState = getQuestionState(currentId);
+  setQuestionState(currentId, { hidden: !qState.hidden });
+  showNextQuestion();
+});
+
+nextBtn.addEventListener("click", () => {
+  showingHiddenPicker = false;
+  showNextQuestion();
+});
+
+showHiddenBtn.addEventListener("click", () => {
+  showingHiddenPicker = true;
+  showNextQuestion();
+});
+
+prioritizeWeakest.addEventListener("change", () => {
+  setSettings({ prioritizeWeakest: prioritizeWeakest.checked });
+});
+
+catalogSelect.addEventListener("change", async () => {
+  const catalog = catalogSelect.value;
+  setSettings({ catalog });
+  loadingEl.hidden = false;
+  panelEl.hidden = true;
+  emptyEl.hidden = true;
+  try {
+    await loadCatalog(catalog);
+    showingHiddenPicker = false;
+    showNextQuestion();
+  } catch (error) {
+    loadingEl.textContent = error.message;
+  } finally {
+    loadingEl.hidden = true;
+  }
+});
+
+async function init() {
+  syncSettingsUi();
+  try {
+    await loadCatalog(getSettings().catalog);
+    loadingEl.hidden = true;
+    showNextQuestion();
+  } catch (error) {
+    loadingEl.textContent = error.message;
+  }
+}
+
+init();

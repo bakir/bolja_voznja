@@ -1,0 +1,894 @@
+{
+  "1": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/001.png",
+    "question_pic": "katalog2_questionpics/001.png"
+  },
+  "2": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/002.png",
+    "question_pic": "katalog2_questionpics/002.png"
+  },
+  "3": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/003.png",
+    "question_pic": "katalog2_questionpics/003.png"
+  },
+  "4": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/004.png",
+    "question_pic": "katalog2_questionpics/004.png"
+  },
+  "5": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/005.png",
+    "question_pic": "katalog2_questionpics/005.png"
+  },
+  "6": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/006.png",
+    "question_pic": "katalog2_questionpics/006.png"
+  },
+  "7": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/007.png",
+    "question_pic": "katalog2_questionpics/007.png"
+  },
+  "8": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/008.png",
+    "question_pic": "katalog2_questionpics/008.png"
+  },
+  "9": {
+    "answers": [
+      1,
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/009.png",
+    "question_pic": "katalog2_questionpics/009.png"
+  },
+  "10": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/010.png",
+    "question_pic": "katalog2_questionpics/010.png"
+  },
+  "11": {
+    "answers": [
+      1,
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/011.png",
+    "question_pic": "katalog2_questionpics/011.png"
+  },
+  "12": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/012.jpeg",
+    "question_pic": "katalog2_questionpics/012.png"
+  },
+  "13": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/013.jpeg",
+    "question_pic": "katalog2_questionpics/013.png"
+  },
+  "14": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/014.png",
+    "question_pic": "katalog2_questionpics/014.png"
+  },
+  "15": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/015.png",
+    "question_pic": "katalog2_questionpics/015.png"
+  },
+  "16": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/016.png",
+    "question_pic": "katalog2_questionpics/016.png"
+  },
+  "17": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/017.jpeg",
+    "question_pic": "katalog2_questionpics/017.png"
+  },
+  "18": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/018.png",
+    "question_pic": "katalog2_questionpics/018.png"
+  },
+  "19": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/019.png",
+    "question_pic": "katalog2_questionpics/019.png"
+  },
+  "20": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/020.png",
+    "question_pic": "katalog2_questionpics/020.png"
+  },
+  "21": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/021.png",
+    "question_pic": "katalog2_questionpics/021.png"
+  },
+  "22": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/022.png",
+    "question_pic": "katalog2_questionpics/022.png"
+  },
+  "23": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/023.jpeg",
+    "question_pic": "katalog2_questionpics/023.png"
+  },
+  "24": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/024.jpeg",
+    "question_pic": "katalog2_questionpics/024.png"
+  },
+  "25": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/025.png",
+    "question_pic": "katalog2_questionpics/025.png"
+  },
+  "26": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/026.png",
+    "question_pic": "katalog2_questionpics/026.png"
+  },
+  "27": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/027.png",
+    "question_pic": "katalog2_questionpics/027.png"
+  },
+  "28": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/028.jpeg",
+    "question_pic": "katalog2_questionpics/028.png"
+  },
+  "29": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/029.png",
+    "question_pic": "katalog2_questionpics/029.png"
+  },
+  "30": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/030.png",
+    "question_pic": "katalog2_questionpics/030.png"
+  },
+  "31": {
+    "answers": [
+      1,
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/031.png",
+    "question_pic": "katalog2_questionpics/031.png"
+  },
+  "32": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/032.png",
+    "question_pic": "katalog2_questionpics/032.png"
+  },
+  "33": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/033.png",
+    "question_pic": "katalog2_questionpics/033.png"
+  },
+  "34": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/034.png",
+    "question_pic": "katalog2_questionpics/034.png"
+  },
+  "35": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/035.png",
+    "question_pic": "katalog2_questionpics/035.png"
+  },
+  "36": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/036.jpeg",
+    "question_pic": "katalog2_questionpics/036.png"
+  },
+  "37": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/037.png",
+    "question_pic": "katalog2_questionpics/037.png"
+  },
+  "38": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/038.png",
+    "question_pic": "katalog2_questionpics/038.png"
+  },
+  "39": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/039.jpeg",
+    "question_pic": "katalog2_questionpics/039.png"
+  },
+  "40": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/040.png",
+    "question_pic": "katalog2_questionpics/040.png"
+  },
+  "41": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/041.jpeg",
+    "question_pic": "katalog2_questionpics/041.png"
+  },
+  "42": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/042.jpeg",
+    "question_pic": "katalog2_questionpics/042.png"
+  },
+  "43": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/043.jpeg",
+    "question_pic": "katalog2_questionpics/043.png"
+  },
+  "44": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/044.png",
+    "question_pic": "katalog2_questionpics/044.png"
+  },
+  "45": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/045.png",
+    "question_pic": "katalog2_questionpics/045.png"
+  },
+  "46": {
+    "answers": [
+      1,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/046.png",
+    "question_pic": "katalog2_questionpics/046.png"
+  },
+  "47": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/047.jpeg",
+    "question_pic": "katalog2_questionpics/047.png"
+  },
+  "48": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/048.png",
+    "question_pic": "katalog2_questionpics/048.png"
+  },
+  "49": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/049.jpeg",
+    "question_pic": "katalog2_questionpics/049.png"
+  },
+  "50": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/050.jpeg",
+    "question_pic": "katalog2_questionpics/050.png"
+  },
+  "51": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/051.png",
+    "question_pic": "katalog2_questionpics/051.png"
+  },
+  "52": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/052.png",
+    "question_pic": "katalog2_questionpics/052.png"
+  },
+  "53": {
+    "answers": [
+      1
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/053.png",
+    "question_pic": "katalog2_questionpics/053.png"
+  },
+  "54": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/054.png",
+    "question_pic": "katalog2_questionpics/054.png"
+  },
+  "55": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/055.jpeg",
+    "question_pic": "katalog2_questionpics/055.png"
+  },
+  "56": {
+    "answers": [
+      1,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/056.png",
+    "question_pic": "katalog2_questionpics/056.png"
+  },
+  "57": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/057.jpeg",
+    "question_pic": "katalog2_questionpics/057.png"
+  },
+  "58": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/058.jpeg",
+    "question_pic": "katalog2_questionpics/058.png"
+  },
+  "59": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/059.png",
+    "question_pic": "katalog2_questionpics/059.png"
+  },
+  "60": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/060.png",
+    "question_pic": "katalog2_questionpics/060.png"
+  },
+  "61": {
+    "answers": [
+      1,
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/061.jpeg",
+    "question_pic": "katalog2_questionpics/061.png"
+  },
+  "62": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/062.png",
+    "question_pic": "katalog2_questionpics/062.png"
+  },
+  "63": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/063.png",
+    "question_pic": "katalog2_questionpics/063.png"
+  },
+  "64": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/064.jpeg",
+    "question_pic": "katalog2_questionpics/064.png"
+  },
+  "65": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/065.jpeg",
+    "question_pic": "katalog2_questionpics/065.png"
+  },
+  "66": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/066.png",
+    "question_pic": "katalog2_questionpics/066.png"
+  },
+  "67": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/067.jpeg",
+    "question_pic": "katalog2_questionpics/067.png"
+  },
+  "68": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/068.png",
+    "question_pic": "katalog2_questionpics/068.png"
+  },
+  "69": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/069.jpeg",
+    "question_pic": "katalog2_questionpics/069.png"
+  },
+  "70": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 4,
+    "image": "katalog2_images/070.jpeg",
+    "question_pic": "katalog2_questionpics/070.png"
+  },
+  "71": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 4,
+    "image": "katalog2_images/071.jpeg",
+    "question_pic": "katalog2_questionpics/071.png"
+  },
+  "72": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/072.jpeg",
+    "question_pic": "katalog2_questionpics/072.png"
+  },
+  "73": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/073.png",
+    "question_pic": "katalog2_questionpics/073.png"
+  },
+  "74": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/074.png",
+    "question_pic": "katalog2_questionpics/074.png"
+  },
+  "75": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/075.jpeg",
+    "question_pic": "katalog2_questionpics/075.png"
+  },
+  "76": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/076.jpeg",
+    "question_pic": "katalog2_questionpics/076.png"
+  },
+  "77": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/077.jpeg",
+    "question_pic": "katalog2_questionpics/077.png"
+  },
+  "78": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/078.jpeg",
+    "question_pic": "katalog2_questionpics/078.png"
+  },
+  "79": {
+    "answers": [
+      1
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/079.png",
+    "question_pic": "katalog2_questionpics/079.png"
+  },
+  "80": {
+    "answers": [
+      1
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/080.png",
+    "question_pic": "katalog2_questionpics/080.png"
+  },
+  "81": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/081.jpeg",
+    "question_pic": "katalog2_questionpics/081.png"
+  },
+  "82": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/082.jpeg",
+    "question_pic": "katalog2_questionpics/082.png"
+  },
+  "83": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/083.jpeg",
+    "question_pic": "katalog2_questionpics/083.png"
+  },
+  "84": {
+    "answers": [
+      1,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/084.jpeg",
+    "question_pic": "katalog2_questionpics/084.png"
+  },
+  "85": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/085.jpeg",
+    "question_pic": "katalog2_questionpics/085.png"
+  },
+  "86": {
+    "answers": [
+      2,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/086.jpeg",
+    "question_pic": "katalog2_questionpics/086.png"
+  },
+  "87": {
+    "answers": [
+      1
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/087.png",
+    "question_pic": "katalog2_questionpics/087.png"
+  },
+  "88": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/088.png",
+    "question_pic": "katalog2_questionpics/088.png"
+  },
+  "89": {
+    "answers": [
+      1
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/089.jpeg",
+    "question_pic": "katalog2_questionpics/089.png"
+  },
+  "90": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/090.jpeg",
+    "question_pic": "katalog2_questionpics/090.png"
+  },
+  "91": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/091.jpeg",
+    "question_pic": "katalog2_questionpics/091.png"
+  },
+  "92": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/092.jpeg",
+    "question_pic": "katalog2_questionpics/092.png"
+  },
+  "93": {
+    "answers": [
+      1,
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/093.png",
+    "question_pic": "katalog2_questionpics/093.png"
+  },
+  "94": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/094.png",
+    "question_pic": "katalog2_questionpics/094.png"
+  },
+  "95": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/095.jpeg",
+    "question_pic": "katalog2_questionpics/095.png"
+  },
+  "96": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/096.jpeg",
+    "question_pic": "katalog2_questionpics/096.png"
+  },
+  "97": {
+    "answers": [
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/097.jpeg",
+    "question_pic": "katalog2_questionpics/097.png"
+  },
+  "98": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/098.png",
+    "question_pic": "katalog2_questionpics/098.png"
+  },
+  "99": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/099.jpeg",
+    "question_pic": "katalog2_questionpics/099.png"
+  },
+  "100": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/100.jpeg",
+    "question_pic": "katalog2_questionpics/100.png"
+  },
+  "101": {
+    "answers": [
+      1
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/101.jpeg",
+    "question_pic": "katalog2_questionpics/101.png"
+  },
+  "102": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/102.png",
+    "question_pic": "katalog2_questionpics/102.png"
+  },
+  "103": {
+    "answers": [
+      1
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/103.jpeg",
+    "question_pic": "katalog2_questionpics/103.png"
+  },
+  "104": {
+    "answers": [
+      1,
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/104.png",
+    "question_pic": "katalog2_questionpics/104.png"
+  },
+  "105": {
+    "answers": [
+      1,
+      2
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/105.png",
+    "question_pic": "katalog2_questionpics/105.png"
+  },
+  "106": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/106.png",
+    "question_pic": "katalog2_questionpics/106.png"
+  },
+  "107": {
+    "answers": [
+      2
+    ],
+    "option_count": 2,
+    "image": "katalog2_images/107.jpeg",
+    "question_pic": "katalog2_questionpics/107.png"
+  },
+  "108": {
+    "answers": [
+      3
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/108.jpeg",
+    "question_pic": "katalog2_questionpics/108.png"
+  },
+  "109": {
+    "answers": [
+      1
+    ],
+    "option_count": 3,
+    "image": "katalog2_images/109.png",
+    "question_pic": "katalog2_questionpics/109.png"
+  }
+}
