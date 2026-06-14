@@ -69,6 +69,15 @@ button.secondary {
   background: rgba(255, 255, 255, 0.15);
 }
 
+button.secondary.active {
+  background: #f0b429;
+  color: #1a1a1a;
+}
+
+#question-panel.is-hard {
+  outline: 3px solid #f0b429;
+}
+
 button:disabled {
   opacity: 0.6;
   cursor: default;
@@ -158,6 +167,41 @@ button:disabled {
 #loading {
   text-align: center;
   color: #555;
+}
+
+#hard-list-dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 1.25rem;
+  max-width: 420px;
+  width: calc(100% - 2rem);
+}
+
+#hard-list-dialog h2 {
+  margin: 0 0 0.75rem;
+}
+
+.hard-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hard-list button {
+  width: 100%;
+  text-align: left;
+  background: #eef3f8;
+  color: #1a1a1a;
+}
+
+.hard-list .hard-meta {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.75;
 }
 
 @media (max-width: 640px) {

@@ -9,8 +9,11 @@ const CATALOG_FILES = {
 const catalogSelect = document.getElementById("catalog-select");
 const prioritizeWeakest = document.getElementById("prioritize-weakest");
 const nextBtn = document.getElementById("next-btn");
+const hardBtn = document.getElementById("hard-btn");
 const hideBtn = document.getElementById("hide-btn");
+const showHardBtn = document.getElementById("show-hard-btn");
 const showHiddenBtn = document.getElementById("show-hidden-btn");
+const hardCountEl = document.getElementById("hard-count");
 const hiddenCountEl = document.getElementById("hidden-count");
 const loadingEl = document.getElementById("loading");
 const panelEl = document.getElementById("question-panel");
@@ -21,11 +24,18 @@ const questionText = document.getElementById("question-text");
 const optionsEl = document.getElementById("options");
 const feedbackEl = document.getElementById("feedback");
 const notesEl = document.getElementById("notes");
+const hardListDialog = document.getElementById("hard-list-dialog");
+const hardListEl = document.getElementById("hard-list");
+const hardListEmptyEl = document.getElementById("hard-list-empty");
 
 let catalogData = {};
 let questionIds = [];
 let currentId = null;
-let showingHiddenPicker = false;
+let browseMode = "normal";
+
+function defaultQuestionState() {
+  return { correctCount: 0, notes: "", hidden: false, hard: false };
+}
 
 function defaultState() {
   return {
@@ -41,7 +51,13 @@ function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultState();
-    return { ...defaultState(), ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    return {
+      ...defaultState(),
+      ...parsed,
+      settings: { ...defaultState().settings, ...parsed.settings },
+      questions: parsed.questions || {},
+    };
   } catch {
     return defaultState();
   }
@@ -59,9 +75,9 @@ function getQuestionState(id) {
   const state = loadState();
   const key = questionKey(state.settings.catalog, id);
   if (!state.questions[key]) {
-    state.questions[key] = { correctCount: 0, notes: "", hidden: false };
+    state.questions[key] = defaultQuestionState();
   }
-  return state.questions[key];
+  return { ...defaultQuestionState(), ...state.questions[key] };
 }
 
 function setQuestionState(id, patch) {
@@ -69,6 +85,7 @@ function setQuestionState(id, patch) {
   const key = questionKey(state.settings.catalog, id);
   state.questions[key] = { ...getQuestionState(id), ...patch };
   saveState(state);
+  updateCounts();
 }
 
 function getSettings() {
@@ -98,19 +115,21 @@ async function loadCatalog(catalog) {
   questionIds = Object.keys(catalogData).sort((a, b) => Number(a) - Number(b));
 }
 
-function availableQuestionIds(includeHidden = false) {
+function questionPool() {
   return questionIds.filter((id) => {
     const qState = getQuestionState(id);
-    return includeHidden || !qState.hidden;
+    if (browseMode === "hidden") return qState.hidden;
+    if (browseMode === "hard") return qState.hard;
+    return !qState.hidden;
   });
 }
 
-function pickNextQuestionId(includeHidden = false) {
-  const pool = availableQuestionIds(includeHidden);
+function pickNextQuestionId() {
+  const pool = questionPool();
   if (!pool.length) return null;
 
   const settings = getSettings();
-  if (settings.prioritizeWeakest) {
+  if (settings.prioritizeWeakest && browseMode === "normal") {
     const counts = pool.map((id) => getQuestionState(id).correctCount ?? 0);
     const minCount = Math.min(...counts);
     const weakest = pool.filter((id) => (getQuestionState(id).correctCount ?? 0) === minCount);
@@ -126,9 +145,48 @@ function pickNextQuestionId(includeHidden = false) {
   return candidate;
 }
 
-function updateHiddenCount() {
-  const hidden = questionIds.filter((id) => getQuestionState(id).hidden).length;
-  hiddenCountEl.textContent = String(hidden);
+function hardQuestionIds() {
+  return questionIds.filter((id) => getQuestionState(id).hard);
+}
+
+function updateCounts() {
+  hardCountEl.textContent = String(hardQuestionIds().length);
+  hiddenCountEl.textContent = String(
+    questionIds.filter((id) => getQuestionState(id).hidden).length,
+  );
+}
+
+function setBrowseMode(mode) {
+  browseMode = mode;
+  showHardBtn.classList.toggle("active", mode === "hard");
+  showHiddenBtn.classList.toggle("active", mode === "hidden");
+}
+
+function renderHardList() {
+  const hardIds = hardQuestionIds();
+  hardListEl.innerHTML = "";
+  hardListEmptyEl.hidden = hardIds.length > 0;
+
+  for (const id of hardIds) {
+    const qState = getQuestionState(id);
+    const record = catalogData[id];
+    const item = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    const title = record?.question || `Pitanje ${id}`;
+    button.innerHTML = `<strong>#${id}</strong> ${title.slice(0, 80)}${
+      title.length > 80 ? "…" : ""
+    }<span class="hard-meta">tačno ${qState.correctCount}×${
+      qState.hidden ? " · sakriveno" : ""
+    }</span>`;
+    button.addEventListener("click", () => {
+      hardListDialog.close();
+      setBrowseMode("hard");
+      renderQuestion(id);
+    });
+    item.appendChild(button);
+    hardListEl.appendChild(item);
+  }
 }
 
 function renderQuestion(id) {
@@ -137,9 +195,11 @@ function renderQuestion(id) {
 
   currentId = id;
   const qState = getQuestionState(id);
-  const settings = getSettings();
 
-  questionLabel.textContent = `Pitanje ${id} · tačno ${qState.correctCount}×`;
+  const hardLabel = qState.hard ? " · teško" : "";
+  questionLabel.textContent = `Pitanje ${id} · tačno ${qState.correctCount}×${hardLabel}`;
+  panelEl.classList.toggle("is-hard", qState.hard);
+
   questionImage.src = record.question_pic;
   questionImage.alt = `Pitanje ${id}`;
 
@@ -168,11 +228,13 @@ function renderQuestion(id) {
   }
 
   notesEl.value = qState.notes || "";
+  hardBtn.textContent = qState.hard ? "Ukloni oznaku teško" : "Označi teško";
+  hardBtn.classList.toggle("active", qState.hard);
   hideBtn.textContent = qState.hidden ? "Vrati pitanje" : "Sakrij pitanje";
 
   panelEl.hidden = false;
   emptyEl.hidden = true;
-  updateHiddenCount();
+  updateCounts();
 }
 
 function checkAnswer(id, selected, button) {
@@ -191,7 +253,9 @@ function checkAnswer(id, selected, button) {
     button.classList.add("correct");
     const qState = getQuestionState(id);
     setQuestionState(id, { correctCount: (qState.correctCount ?? 0) + 1 });
-    questionLabel.textContent = `Pitanje ${id} · tačno ${getQuestionState(id).correctCount}×`;
+    const updated = getQuestionState(id);
+    const hardLabel = updated.hard ? " · teško" : "";
+    questionLabel.textContent = `Pitanje ${id} · tačno ${updated.correctCount}×${hardLabel}`;
   } else {
     feedbackEl.textContent = `Netačno. Tačan odgovor: ${correctAnswers.join(", ")}`;
     feedbackEl.className = "feedback wrong";
@@ -200,7 +264,7 @@ function checkAnswer(id, selected, button) {
 }
 
 function showNextQuestion() {
-  const id = pickNextQuestionId(showingHiddenPicker);
+  const id = pickNextQuestionId();
   if (!id) {
     panelEl.hidden = true;
     emptyEl.hidden = false;
@@ -221,6 +285,13 @@ notesEl.addEventListener("input", () => {
   setQuestionState(currentId, { notes: notesEl.value });
 });
 
+hardBtn.addEventListener("click", () => {
+  if (!currentId) return;
+  const qState = getQuestionState(currentId);
+  setQuestionState(currentId, { hard: !qState.hard });
+  renderQuestion(currentId);
+});
+
 hideBtn.addEventListener("click", () => {
   if (!currentId) return;
   const qState = getQuestionState(currentId);
@@ -229,12 +300,22 @@ hideBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
-  showingHiddenPicker = false;
+  setBrowseMode("normal");
+  showNextQuestion();
+});
+
+showHardBtn.addEventListener("click", (event) => {
+  if (event.shiftKey) {
+    renderHardList();
+    hardListDialog.showModal();
+    return;
+  }
+  setBrowseMode(browseMode === "hard" ? "normal" : "hard");
   showNextQuestion();
 });
 
 showHiddenBtn.addEventListener("click", () => {
-  showingHiddenPicker = true;
+  setBrowseMode(browseMode === "hidden" ? "normal" : "hidden");
   showNextQuestion();
 });
 
@@ -250,7 +331,7 @@ catalogSelect.addEventListener("change", async () => {
   emptyEl.hidden = true;
   try {
     await loadCatalog(catalog);
-    showingHiddenPicker = false;
+    setBrowseMode("normal");
     showNextQuestion();
   } catch (error) {
     loadingEl.textContent = error.message;
@@ -261,6 +342,7 @@ catalogSelect.addEventListener("change", async () => {
 
 async function init() {
   syncSettingsUi();
+  setBrowseMode("normal");
   try {
     await loadCatalog(getSettings().catalog);
     loadingEl.hidden = true;

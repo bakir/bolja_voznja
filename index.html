@@ -23,6 +23,7 @@
         Prioritizuj najslabije
       </label>
       <button type="button" id="next-btn">Sljedeće pitanje</button>
+      <button type="button" id="show-hard-btn" class="secondary">Teška (<span id="hard-count">0</span>)</button>
       <button type="button" id="show-hidden-btn" class="secondary">Sakrivena (<span id="hidden-count">0</span>)</button>
     </div>
   </header>
@@ -33,6 +34,7 @@
       <div class="question-meta">
         <span id="question-label"></span>
         <div class="question-actions">
+          <button type="button" id="hard-btn" class="secondary">Označi teško</button>
           <button type="button" id="hide-btn" class="secondary">Sakrij pitanje</button>
         </div>
       </div>
@@ -45,8 +47,17 @@
         <textarea id="notes" rows="3" placeholder="Tvoje bilješke za ovo pitanje…"></textarea>
       </label>
     </section>
-    <p id="empty-state" hidden>Nema dostupnih pitanja. Uključi sakrivena ili promijeni katalog.</p>
+    <p id="empty-state" hidden>Nema dostupnih pitanja. Promijeni filter ili katalog.</p>
   </main>
+
+  <dialog id="hard-list-dialog">
+    <form method="dialog">
+      <h2>Teška pitanja</h2>
+      <ul id="hard-list" class="hard-list"></ul>
+      <p id="hard-list-empty" hidden>Nema označenih teških pitanja.</p>
+      <button type="submit" value="close">Zatvori</button>
+    </form>
+  </dialog>
 
   <script src="app.js"></script>
 </body>
