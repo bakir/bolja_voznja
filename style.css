@@ -106,6 +106,21 @@ button:disabled {
   align-items: center;
 }
 
+.question-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+#prev-btn,
+#next-seq-btn {
+  min-width: 2.5rem;
+  padding-inline: 0.65rem;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
 #question-label {
   font-weight: 600;
 }

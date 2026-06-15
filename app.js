@@ -9,6 +9,8 @@ const CATALOG_FILES = {
 const catalogSelect = document.getElementById("catalog-select");
 const prioritizeWeakest = document.getElementById("prioritize-weakest");
 const nextBtn = document.getElementById("next-btn");
+const prevBtn = document.getElementById("prev-btn");
+const nextSeqBtn = document.getElementById("next-seq-btn");
 const hardBtn = document.getElementById("hard-btn");
 const hideBtn = document.getElementById("hide-btn");
 const showHardBtn = document.getElementById("show-hard-btn");
@@ -263,6 +265,24 @@ function checkAnswer(id, selected, button) {
   }
 }
 
+function navigateSequential(delta) {
+  const pool = questionPool();
+  if (!pool.length) {
+    panelEl.hidden = true;
+    emptyEl.hidden = false;
+    currentId = null;
+    return;
+  }
+
+  let index = currentId ? pool.indexOf(currentId) : -1;
+  if (index === -1) {
+    index = delta > 0 ? 0 : pool.length - 1;
+  } else {
+    index = (index + delta + pool.length) % pool.length;
+  }
+  renderQuestion(pool[index]);
+}
+
 function showNextQuestion() {
   const id = pickNextQuestionId();
   if (!id) {
@@ -302,6 +322,23 @@ hideBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
   setBrowseMode("normal");
   showNextQuestion();
+});
+
+prevBtn.addEventListener("click", () => navigateSequential(-1));
+nextSeqBtn.addEventListener("click", () => navigateSequential(1));
+
+document.addEventListener("keydown", (event) => {
+  const tag = event.target.tagName;
+  if (tag === "TEXTAREA" || tag === "INPUT" || tag === "SELECT") return;
+  if (hardListDialog.open) return;
+
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    navigateSequential(1);
+  } else if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    navigateSequential(-1);
+  }
 });
 
 showHardBtn.addEventListener("click", (event) => {
