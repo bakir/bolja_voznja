@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract full-question images from katalog3.pdf (5 questions per page)."""
+"""Extract full-question images from katalog2.pdf (5 questions per page)."""
 
 from __future__ import annotations
 
@@ -10,13 +10,13 @@ from page_question_images import extract_all_images
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Extract question images from katalog3.pdf.")
-    parser.add_argument("pdf", nargs="?", default="katalog3.pdf")
+    parser = argparse.ArgumentParser(description="Extract question images from katalog2.pdf.")
+    parser.add_argument("pdf", nargs="?", default="katalog2.pdf")
     parser.add_argument(
         "-o",
         "--output-dir",
-        default="katalog3_questionpics",
-        help="Directory for PNG output (default: katalog3_questionpics)",
+        default="katalog2_questionpics",
+        help="Directory for PNG output (default: katalog2_questionpics)",
     )
     args = parser.parse_args()
 
